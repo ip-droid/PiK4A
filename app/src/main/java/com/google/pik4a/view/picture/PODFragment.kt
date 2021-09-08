@@ -75,6 +75,9 @@ class PODFragment:Fragment() {
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
                 }
+                binding.includeLayout.bottomSheetDescriptionHeader.text =data.serverResponseData.explanation // так
+                binding.includeLayout.bottomSheetDescription.text =data.serverResponseData.explanation // или так, дальше уже на ваш вкус
+
             }
         }
     }
