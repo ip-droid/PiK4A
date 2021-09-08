@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.pik4a.BuildConfig
+import com.google.pik4a.R
 import com.google.pik4a.repository.PODRetrofitImpl
 import com.google.pik4a.repository.PODServerResponseData
 import retrofit2.Call
@@ -32,12 +33,12 @@ class PODViewModel(private val liveDataToObserve: MutableLiveData<PictureOfTheDa
                         if(response.isSuccessful && response.body()!=null){
                             liveDataToObserve.postValue(PictureOfTheDayData.Success(response.body() as PODServerResponseData))
                         }else{
-                            // TODO HW
+                            R.drawable.ic_baseline_error_24
                         }
                     }
 
                     override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                        // TODO HW
+                        R.drawable.ic_baseline_error_24
                     }
 
                 }
