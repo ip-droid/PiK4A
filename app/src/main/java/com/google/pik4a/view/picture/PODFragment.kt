@@ -22,7 +22,6 @@ import com.google.pik4a.viewmodel.PictureOfTheDayData
 class PODFragment:Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-
     private var _binding: FragmentMainBinding? = null
     lateinit var binding:FragmentMainBinding
 
@@ -46,6 +45,8 @@ class PODFragment:Fragment() {
             val i = Intent(Intent.ACTION_VIEW).apply {
                 data =
                     Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+
+
             }
             startActivity(i)
         }
@@ -59,9 +60,6 @@ class PODFragment:Fragment() {
     }
 
 
-    private fun viewTextPicture() {
-
-    }
 
     private fun renderData(data: PictureOfTheDayData) {
         when (data) {
@@ -75,6 +73,8 @@ class PODFragment:Fragment() {
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
                 }
+                binding.includeLayout.bottomSheetDescriptionHeader.text =data.serverResponseData.explanation // так
+                binding.includeLayout.bottomSheetDescription.text =data.serverResponseData.explanation
             }
         }
     }
