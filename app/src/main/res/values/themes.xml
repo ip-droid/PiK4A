@@ -22,4 +22,31 @@
         <item name="endIconMode">custom</item>
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
     </style>
+
+    <style name="Theme.Space" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textColorPrimary">@color/ColorPrimarySpace</item>
+        <item name="colorPrimary">@color/TextColorPrimarySpace</item>
+        <item name="colorPrimaryDark">@color/ColorPrimarySpaceDark</item>
+        <item name="android:windowBackground">@color/SpaceWindowBackground</item>
+        <item name="android:navigationBarColor">@color/NBCSpace</item>
+    </style>
+
+    <style name="Theme.Moon" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorPrimary">@color/ColorPrimaryMoon</item>
+        <item name="colorPrimary">@color/TextColorPrimaryMoon</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryMoonDark</item>
+        <item name="android:windowBackground">@color/MoonWindowBackground</item>
+        <item name="android:navigationBarColor">@color/NBCMoon</item>
+        <item name="buttonStyle"></item>
+    </style>
+
+    <style name="Theme.Martian" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorPrimary">@color/ColorPrimaryMartian</item>
+        <item name="colorPrimary">@color/TextColorPrimaryMartian</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryMartianDark</item>
+        <item name="android:windowBackground">@color/MartianWindowBackground</item>
+        <item name="android:navigationBarColor">@color/NBCMartian</item>
+    </style>
+
+
 </resources>

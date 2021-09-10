@@ -13,4 +13,30 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    //ColorPrimary
+    <color name="ColorPrimaryMoon">#ffeb3b</color>
+    <color name="ColorPrimaryMartian">#dd2c00</color>
+    <color name="ColorPrimarySpace">#3949ab</color>
+
+    //TextColorPrimary
+    <color name="TextColorPrimaryMoon">#000000</color>
+    <color name="TextColorPrimaryMartian">#FFFFFF</color>
+    <color name="TextColorPrimarySpace">#000000</color>
+
+    //ColorPrimaryDark
+    <color name="ColorPrimaryMoonDark">#c8b900</color>
+    <color name="ColorPrimaryMartianDark">#a30000</color>
+    <color name="ColorPrimarySpaceDark">#00227b</color>
+
+    //WindowBackground
+    <color name="MoonWindowBackground">#ffff72</color>
+    <color name="MartianWindowBackground">#dc462b</color>
+    <color name="SpaceWindowBackground">#474aab</color>
+
+    //NavigationBarColor
+    <color name="NBCMoon">#c8b900</color>
+    <color name="NBCMartian">#a30000</color>
+    <color name="NBCSpace">#00227b</color>
+
 </resources>
