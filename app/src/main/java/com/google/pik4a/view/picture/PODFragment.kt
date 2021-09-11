@@ -64,7 +64,11 @@ class PODFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
 
+
+
     }
+
+
 
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
@@ -97,6 +101,8 @@ class PODFragment : Fragment() {
             }
         }
     }
+
+
 
 
     override fun onDestroy() {
