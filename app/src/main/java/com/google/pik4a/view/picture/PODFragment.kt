@@ -1,27 +1,22 @@
 package com.google.pik4a.view.picture
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.security.identity.AccessControlProfileId
-import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.pik4a.R
-import com.google.pik4a.databinding.BottomSheetsLayoutBinding
 import com.google.pik4a.databinding.FragmentMainBinding
-import com.google.pik4a.view.MainActivity
 import com.google.pik4a.viewmodel.PODViewModel
 import com.google.pik4a.viewmodel.PictureOfTheDayData
 
@@ -61,6 +56,16 @@ class PODFragment : Fragment() {
 
 
     }
+
+        override fun onCheckedChanged(group: RadioGroup?, checkId: Int) {
+            val checkedRadioButton = group?.findViewById(group.checkedRadioButtonId) as? RadioButton
+            checkedRadioButton?.let {
+
+                if (checkedRadioButton.isChecked)
+                    Toast.makeText(applicationContext, "RadioGroup: ${group?.contentDescription} RadioButton: ${checkedRadioButton?.text}", Toast.LENGTH_LONG).show()
+            }
+
+
 
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)

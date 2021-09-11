@@ -1,13 +1,7 @@
 package com.google.pik4a.view
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.ContextThemeWrapper
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import com.google.android.material.button.MaterialButton
+import androidx.appcompat.app.AppCompatActivity
 import com.google.pik4a.R
 import com.google.pik4a.view.picture.PODFragment
 
