@@ -23,30 +23,68 @@
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
     </style>
 
-    <style name="Theme.Space" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="StyleSpace" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:textColorPrimary">@color/ColorPrimarySpace</item>
         <item name="colorPrimary">@color/TextColorPrimarySpace</item>
         <item name="colorPrimaryDark">@color/ColorPrimarySpaceDark</item>
         <item name="android:windowBackground">@color/SpaceWindowBackground</item>
         <item name="android:navigationBarColor">@color/NBCSpace</item>
+        <item name="colorSurface">@color/CSSpace</item>
+        <item name="fontFamily">@font/space</item>
+        <item name="shapeAppearanceSmallComponent">
+            @style/ShapeAppearance.MaterialComponents.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">
+            @style/ShapeAppearance.MaterialComponents.MediumComponent
+        </item>
+        <item name="materialButtonStyle">@style/SpaceButton</item>
     </style>
 
-    <style name="Theme.Moon" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+    <style name="StyleMoon" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorPrimary">@color/ColorPrimaryMoon</item>
         <item name="colorPrimary">@color/TextColorPrimaryMoon</item>
         <item name="colorPrimaryDark">@color/ColorPrimaryMoonDark</item>
         <item name="android:windowBackground">@color/MoonWindowBackground</item>
         <item name="android:navigationBarColor">@color/NBCMoon</item>
-        <item name="buttonStyle"></item>
+        <item name="buttonStyle">@color/black</item>
+        <item name="colorSurface">@color/CSMoon</item>
+        <item name="fontFamily">@font/moon</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MaterialComponents.MediumComponent
+        </item><item name="materialButtonStyle">@style/MoonButton</item>
     </style>
 
-    <style name="Theme.Martian" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+    <style name="StyleMartian" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorPrimary">@color/ColorPrimaryMartian</item>
         <item name="colorPrimary">@color/TextColorPrimaryMartian</item>
         <item name="colorPrimaryDark">@color/ColorPrimaryMartianDark</item>
         <item name="android:windowBackground">@color/MartianWindowBackground</item>
         <item name="android:navigationBarColor">@color/NBCMartian</item>
+        <item name="colorSurface">@color/CSMartian</item>
+        <item name="fontFamily">@font/martian</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MaterialComponents.MediumComponent</item>
     </style>
+
+
+    <style name="AppShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+
+    <style name="SpaceButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+    <style name="MoonButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
 
 
 </resources>

@@ -39,4 +39,10 @@
     <color name="NBCMartian">#a30000</color>
     <color name="NBCSpace">#00227b</color>
 
+    //ColorSurface
+    <color name="CSMoon">#efebe9</color>
+    <color name="CSMartian">#ffbb93</color>
+    <color name="CSSpace">#5B6C87</color>
+
+
 </resources>

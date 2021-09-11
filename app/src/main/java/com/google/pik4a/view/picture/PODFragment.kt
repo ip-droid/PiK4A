@@ -28,12 +28,12 @@ import com.google.pik4a.view.MainActivity
 import com.google.pik4a.viewmodel.PODViewModel
 import com.google.pik4a.viewmodel.PictureOfTheDayData
 
-class PODFragment:Fragment() {
+class PODFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var radioGroup: RadioGroup
 
     private var _binding: FragmentMainBinding? = null
-    lateinit var binding:FragmentMainBinding
+    lateinit var binding: FragmentMainBinding
 
 
     override fun onCreateView(
@@ -44,8 +44,6 @@ class PODFragment:Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater)
         return binding.root
-
-
 
 
     }
@@ -64,6 +62,8 @@ class PODFragment:Fragment() {
         }
         bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+
     }
 
     private val viewModel: PODViewModel by lazy {
@@ -71,6 +71,11 @@ class PODFragment:Fragment() {
     }
 
 
+//    override fun onCheckedChanged(group: RadioGroup, checkId: Int) {
+//        if (checkId != -1) {
+//
+//        }
+//    }
 
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -85,12 +90,13 @@ class PODFragment:Fragment() {
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
                 }
-                binding.includeLayout.bottomSheetDescriptionHeader.text =data.serverResponseData.explanation
-                binding.includeLayout.bottomSheetDescription.text =data.serverResponseData.explanation
+                binding.includeLayout.bottomSheetDescriptionHeader.text =
+                    data.serverResponseData.explanation
+                binding.includeLayout.bottomSheetDescription.text =
+                    data.serverResponseData.explanation
             }
         }
     }
-
 
 
     override fun onDestroy() {

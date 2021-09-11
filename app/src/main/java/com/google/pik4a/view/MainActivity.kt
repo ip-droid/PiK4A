@@ -18,16 +18,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.container, PODFragment.newInstance()).commit()
         }
 
-        class MyButton : MaterialButton {
-            constructor(
-                context: Context,
-                attrs: AttributeSet
-            ) : super(
-                // It will override the contexts theme with the values inside theme overlay.
-                ContextThemeWrapper(context, R.style.Theme_Martian),
-                attrs
-            )
-        }
+//        class MyButton : MaterialButton {
+//            constructor(
+//                context: Context,
+//                attrs: AttributeSet
+//            ) : super(
+//                // It will override the contexts theme with the values inside theme overlay.
+//                ContextThemeWrapper(context, R.style.Style_Martian),
+//                attrs
+//            )
+//        }
     }
 
 
