@@ -39,7 +39,6 @@ class PODFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
@@ -55,22 +54,25 @@ class PODFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
 
-    }
-
-        override fun onCheckedChanged(group: RadioGroup?, checkId: Int) {
+        binding.radioGroup.setOnCheckedChangeListener { group: RadioGroup?, checkId: Int ->
             val checkedRadioButton = group?.findViewById(group.checkedRadioButtonId) as? RadioButton
             checkedRadioButton?.let {
 
                 if (checkedRadioButton.isChecked)
-                    Toast.makeText(applicationContext, "RadioGroup: ${group?.contentDescription} RadioButton: ${checkedRadioButton?.text}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "RadioGroup: ${group?.contentDescription} RadioButton: ${checkedRadioButton?.text}",
+                        Toast.LENGTH_LONG
+                    ).show()
             }
+        }
 
+    }
 
 
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
-
 
 
     private fun renderData(data: PictureOfTheDayData) {
