@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import com.google.android.material.button.MaterialButton
 import com.google.pik4a.R
 import com.google.pik4a.view.picture.PODFragment
@@ -17,19 +19,5 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState==null){
             supportFragmentManager.beginTransaction().replace(R.id.container, PODFragment.newInstance()).commit()
         }
-
-//        class MyButton : MaterialButton {
-//            constructor(
-//                context: Context,
-//                attrs: AttributeSet
-//            ) : super(
-//                // It will override the contexts theme with the values inside theme overlay.
-//                ContextThemeWrapper(context, R.style.Style_Martian),
-//                attrs
-//            )
-//        }
     }
-
-
-
 }

@@ -6,10 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.security.identity.AccessControlProfileId
 import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -44,9 +41,8 @@ class PODFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater)
         return binding.root
-
-
     }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,22 +60,12 @@ class PODFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
 
-
-
     }
-
-
 
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
 
-
-//    override fun onCheckedChanged(group: RadioGroup, checkId: Int) {
-//        if (checkId != -1) {
-//
-//        }
-//    }
 
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -101,9 +87,6 @@ class PODFragment : Fragment() {
             }
         }
     }
-
-
-
 
     override fun onDestroy() {
         super.onDestroy()
