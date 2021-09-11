@@ -3,9 +3,7 @@ package com.google.pik4a.view.picture
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -39,7 +37,6 @@ class PODFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
@@ -57,20 +54,10 @@ class PODFragment : Fragment() {
 
     }
 
-        override fun onCheckedChanged(group: RadioGroup?, checkId: Int) {
-            val checkedRadioButton = group?.findViewById(group.checkedRadioButtonId) as? RadioButton
-            checkedRadioButton?.let {
-
-                if (checkedRadioButton.isChecked)
-                    Toast.makeText(applicationContext, "RadioGroup: ${group?.contentDescription} RadioButton: ${checkedRadioButton?.text}", Toast.LENGTH_LONG).show()
-            }
-
-
 
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
-
 
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -101,4 +88,12 @@ class PODFragment : Fragment() {
     companion object {
         fun newInstance() = PODFragment()
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+
 }
