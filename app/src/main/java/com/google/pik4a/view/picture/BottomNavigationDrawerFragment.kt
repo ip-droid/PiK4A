@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.pik4a.R
+import com.google.pik4a.databinding.BottonNavigationLayoutBinding
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
-    private var _binding: BottomNavigationLayoutBinding? = null
-    val binding: BottomNavigationLayoutBinding
+    private var _binding: BottonNavigationLayoutBinding? = null
+    val binding: BottonNavigationLayoutBinding
         get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +20,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = BottomNavigationLayoutBinding.inflate(inflater)
+        _binding = BottonNavigationLayoutBinding.inflate(inflater)
         return binding.root
     }
 
