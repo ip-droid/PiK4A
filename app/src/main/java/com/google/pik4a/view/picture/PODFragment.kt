@@ -28,8 +28,8 @@ class PODFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     lateinit var binding: FragmentMainBinding
 
-
     override fun onCreateView(
+
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +38,7 @@ class PODFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater)
         setActionBar()
         return binding.root
+
     }
 
 

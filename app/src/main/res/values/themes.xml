@@ -23,7 +23,7 @@
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
     </style>
 
-    <style name="StyleSpace" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="StyleSpace" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColorPrimary">@color/ColorPrimarySpace</item>
         <item name="colorPrimary">@color/TextColorPrimarySpace</item>
         <item name="colorPrimaryDark">@color/ColorPrimarySpaceDark</item>
@@ -33,10 +33,10 @@
         <item name="fontFamily">@font/space</item>
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MaterialComponents.MediumComponent</item>
-        <item name="materialButtonStyle">@style/SpaceButton</item>
+        <item name="materialButtonStyle">@style/SpaceButton</item>+
     </style>
 
-    <style name="StyleMoon" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="StyleMoon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColorPrimary">@color/ColorPrimaryMoon</item>
         <item name="colorPrimary">@color/TextColorPrimaryMoon</item>
         <item name="colorPrimaryDark">@color/ColorPrimaryMoonDark</item>
@@ -50,13 +50,13 @@
         </item><item name="materialButtonStyle">@style/MoonButton</item>
     </style>
 
-    <style name="StyleMartian" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="StyleMartian" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColorPrimary">@color/ColorPrimaryMartian</item>
         <item name="colorPrimary">#6C0101</item>
         <item name="colorPrimaryDark">@color/ColorPrimaryMartianDark</item>
         <item name="android:windowBackground">@color/MartianWindowBackground</item>
         <item name="android:navigationBarColor">@color/NBCMartian</item>
-        <item name="colorSurface">@color/CSMartian</item>
+        <item name="colorSurface">#9C7573</item>
         <item name="fontFamily">@font/martian</item>
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MaterialComponents.MediumComponent</item>
