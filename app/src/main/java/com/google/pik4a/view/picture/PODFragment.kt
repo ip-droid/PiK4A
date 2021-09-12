@@ -57,6 +57,7 @@ class PODFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
 
+
         binding.radioGroup.setOnCheckedChangeListener { group: RadioGroup?, checkId: Int ->
             val checkedRadioButton = group?.findViewById(group.checkedRadioButtonId) as? RadioButton
             checkedRadioButton?.let {
