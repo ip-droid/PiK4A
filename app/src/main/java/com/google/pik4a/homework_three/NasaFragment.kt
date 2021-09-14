@@ -1,4 +1,4 @@
-package com.google.pik4a.view.picture
+package com.google.pik4a.homework_three
 
 import android.content.Intent
 import android.net.Uri
@@ -8,20 +8,21 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.pik4a.R
 import com.google.pik4a.databinding.FragmentMainBinding
 import com.google.pik4a.view.MainActivity
+import com.google.pik4a.view.picture.BottomNavigationDrawerFragment
+import com.google.pik4a.view.picture.PODFragment
 import com.google.pik4a.viewmodel.PODViewModel
 import com.google.pik4a.viewmodel.PictureOfTheDayData
 
-class PODFragment : Fragment() {
+class NasaFragment: Fragment() {
+
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var radioGroup: RadioGroup
 
@@ -36,8 +37,8 @@ class PODFragment : Fragment() {
     ): View? {
 
         binding = FragmentMainBinding.inflate(inflater)
-        setActionBar()
-        return inflater.inflate(R.layout.fragment_earth, container, false)
+//        setActionBar()
+        return inflater.inflate(R.layout.fragment_nasa, container, false)
 
     }
 
@@ -132,12 +133,12 @@ class PODFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private var isMain = true
-    private fun setActionBar() {
-        (context as MainActivity).setSupportActionBar(binding.bottomAppBar)
-        setHasOptionsMenu(true)
-
-    }
+//    private var isMain = true
+//    private fun setActionBar() {
+//        (context as MainActivity).setSupportActionBar(binding.bottomAppBar)
+//        setHasOptionsMenu(true)
+//
+//    }
 
 
 }

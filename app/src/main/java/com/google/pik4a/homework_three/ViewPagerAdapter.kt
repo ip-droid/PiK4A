@@ -7,10 +7,11 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 private const val EARTH =0
 private const val MARS =1
 private const val SYSTEM =2
+private const val NASA =3
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager) {
 
-    private val fragments = arrayOf(EarthFragment(),MarsFragment(),SystemFragment())
+    private val fragments = arrayOf(EarthFragment(),MarsFragment(),SystemFragment(),NasaFragment())
 
     override fun getCount(): Int {
         return fragments.size
@@ -21,6 +22,7 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager): FragmentSt
             0->fragments[EARTH]
             1->fragments[MARS]
             2->fragments[SYSTEM]
+            3->fragments[NASA]
             else ->fragments[EARTH]
         }
     }
@@ -30,6 +32,7 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager): FragmentSt
             0->"Earth"
             1->"Mars"
             2->"System"
+            3->"Nasa"
             else ->"Earth"
         }
     }

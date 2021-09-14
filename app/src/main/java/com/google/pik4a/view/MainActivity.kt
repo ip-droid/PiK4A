@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.pik4a.R
+import com.google.pik4a.homework_three.NasaFragment
 import com.google.pik4a.view.picture.PODFragment
 
 class MainActivity : AppCompatActivity() {
@@ -14,10 +15,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
         if(savedInstanceState==null){
-            supportFragmentManager.beginTransaction().replace(R.id.container, PODFragment.newInstance()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.container, NasaFragment.newInstance()).commit()
         }
     }
 

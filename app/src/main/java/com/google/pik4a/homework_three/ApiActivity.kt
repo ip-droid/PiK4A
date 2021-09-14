@@ -14,6 +14,8 @@ class ApiActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+
     }
 
 }
