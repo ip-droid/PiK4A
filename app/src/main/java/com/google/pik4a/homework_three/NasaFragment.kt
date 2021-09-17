@@ -38,7 +38,7 @@ class NasaFragment: Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater)
 //        setActionBar()
-        return inflater.inflate(R.layout.fragment_nasa, container, false)
+        return binding.root
 
     }
 
@@ -106,7 +106,7 @@ class NasaFragment: Fragment() {
     }
 
     companion object {
-        fun newInstance() = PODFragment()
+        fun newInstance() = NasaFragment()
     }
 
 
