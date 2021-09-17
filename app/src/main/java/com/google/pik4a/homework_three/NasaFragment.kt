@@ -64,10 +64,12 @@ class NasaFragment: Fragment() {
             checkedRadioButton?.let {
 
                 if (checkedRadioButton.isChecked)
+
                     Toast.makeText(
                         requireContext(),
                         "RadioGroup: ${group?.contentDescription} RadioButton: ${checkedRadioButton?.text}",
                         Toast.LENGTH_LONG
+
 
                     ).show()
             }
@@ -124,7 +126,6 @@ class NasaFragment: Fragment() {
             R.id.app_bar_settings -> {
                 Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
             }
-            // у нашего бургера такой вот id внутри android
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()
                     .show(requireActivity().supportFragmentManager, "")

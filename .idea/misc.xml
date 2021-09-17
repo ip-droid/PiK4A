@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/drawable/bg_earth.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.34814814814814815" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/drawable/swipe_indicator_passive.xml" value="0.13240740740740742" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/font/font.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/layout/activity_api.xml" value="0.1" />
+        <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/layout/activity_api_bottom.xml" value="0.2490740740740741" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/layout/activity_api_tablayout_earth.xml" value="0.1" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/layout/activity_api_tablayout_mars.xml" value="0.1" />
         <entry key="..\:/Users/sereg/AndroidStudioProjects/PiK4A/app/src/main/res/layout/activity_api_tablayout_nasa.xml" value="0.20520833333333333" />

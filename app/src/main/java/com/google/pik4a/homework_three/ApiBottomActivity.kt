@@ -13,6 +13,7 @@ class ApiBottomActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_api_bottom)
         binding = ActivityApiBottomBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.setOnItemSelectedListener{
@@ -26,6 +27,10 @@ class ApiBottomActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_system->{
+                    supportFragmentManager.beginTransaction().replace(R.id.container, SystemFragment()).commit()
+                    true
+                }
+                R.id.action_nasa->{
                     supportFragmentManager.beginTransaction().replace(R.id.container, SystemFragment()).commit()
                     true
                 }

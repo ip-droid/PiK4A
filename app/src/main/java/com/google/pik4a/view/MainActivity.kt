@@ -11,7 +11,7 @@ import com.google.pik4a.view.picture.PODFragment
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_api_bottom)
 
 
 
