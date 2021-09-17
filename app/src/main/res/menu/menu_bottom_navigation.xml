@@ -2,15 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/app_bar_fav"
-        android:icon="@drawable/ic_favourite_menu"
-        android:title="@string/favourite"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_earth"
+        android:icon="@drawable/ic_earth"
+        app:tooltipText="Это Земля"
+        android:title="Earth" />
+    <item
+        android:id="@+id/action_mars"
+        android:icon="@drawable/ic_mars"
+        android:title="Mars" />
+    <item
+        android:id="@+id/action_system"
+        android:icon="@drawable/ic_system"
+        android:title="System" />
 
     <item
-        android:id="@+id/app_bar_settings"
-        android:icon="@drawable/ic_settings_menu"
-        android:title="@string/settings"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_nasa"
+        android:icon="@drawable/download"
+        android:title="System" />
 
 </menu>

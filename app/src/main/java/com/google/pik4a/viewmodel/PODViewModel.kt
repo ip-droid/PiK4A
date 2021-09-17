@@ -7,6 +7,7 @@ import com.google.pik4a.BuildConfig
 import com.google.pik4a.R
 import com.google.pik4a.repository.PODRetrofitImpl
 import com.google.pik4a.repository.PODServerResponseData
+import com.google.pik4a.repository.SolarFlareResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,25 +25,41 @@ class PODViewModel(private val liveDataToObserve: MutableLiveData<PictureOfTheDa
         if(apiKey.isBlank()){
             //
         }else{
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(
-                object : Callback<PODServerResponseData> {
-                    override fun onResponse(
-                        call: Call<PODServerResponseData>,
-                        response: Response<PODServerResponseData>
-                    ) {
-                        if(response.isSuccessful && response.body()!=null){
-                            liveDataToObserve.postValue(PictureOfTheDayData.Success(response.body() as PODServerResponseData))
-                        }else{
-                            R.drawable.ic_baseline_error_24
-                        }
-                    }
+            retrofitImpl.getPictureOfTheDay(apiKey,PODCallback)
+            retrofitImpl.getSolarFlareToday(apiKey,solarFlareCallback,"2021-09-01")
+        }
+    }
 
-                    override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                        R.drawable.ic_baseline_error_24
-                    }
+    val PODCallback  = object : Callback<PODServerResponseData>{
+        override fun onResponse(
+            call: Call<PODServerResponseData>,
+            response: Response<PODServerResponseData>
+        ) {
+            if(response.isSuccessful && response.body()!=null){
+                liveDataToObserve.postValue(PictureOfTheDayData.Success(response.body() as PODServerResponseData)) // FIXME костыль
+            }else{
+                // TODO HW
+            }
+        }
 
-                }
-            )
+        override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
+            // TODO HW
+        }
+    }
+
+    val solarFlareCallback  = object : Callback<List<SolarFlareResponseData>>{
+        override fun onResponse(
+            call: Call<List<SolarFlareResponseData>>,
+            response: Response<List<SolarFlareResponseData>>
+        ) {
+            if(response.isSuccessful && response.body()!=null){
+            }else{
+                // TODO HW
+            }
+        }
+
+        override fun onFailure(call: Call<List<SolarFlareResponseData>>, t: Throwable) {
+            liveDataToObserve.postValue(PictureOfTheDayData.Error(t))
         }
     }
 }

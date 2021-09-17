@@ -17,6 +17,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.pik4a.R
 import com.google.pik4a.databinding.FragmentMainBinding
+import com.google.pik4a.homework_three.ApiActivity
 import com.google.pik4a.view.MainActivity
 import com.google.pik4a.viewmodel.PODViewModel
 import com.google.pik4a.viewmodel.PictureOfTheDayData
@@ -119,6 +120,7 @@ class PODFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> {
                 Toast.makeText(context, "Favorite", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(context,ApiActivity::class.java))
             }
             R.id.app_bar_settings -> {
                 Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
