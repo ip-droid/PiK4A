@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.pik4a.R
 
-class MarsFragment: Fragment() {
+class MarsFragment:Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
