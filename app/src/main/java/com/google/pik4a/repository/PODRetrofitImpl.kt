@@ -27,4 +27,5 @@ class PODRetrofitImpl {
         api.getSolarFlareToday(apiKey,startDate).enqueue(podCallback)
     }
 
+
 }
