@@ -11,5 +11,5 @@
         android:drawablePadding="10dp"
         android:text="Earth"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
+        android:textSize="11dp" />
 </FrameLayout>

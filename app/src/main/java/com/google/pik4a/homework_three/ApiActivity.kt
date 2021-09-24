@@ -30,6 +30,8 @@ class ApiActivity : AppCompatActivity() {
             layoutInflater.inflate(R.layout.activity_api_tablayout_mars,null)
         binding.tabLayout.getTabAt(2)?.customView =
             layoutInflater.inflate(R.layout.activity_api_tablayout_system,null)
+        binding.tabLayout.getTabAt(3)?.customView =
+            layoutInflater.inflate(R.layout.activity_api_tablayout_nasa,null)
 
     }
 

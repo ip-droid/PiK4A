@@ -27,7 +27,11 @@ class PODFragment : Fragment() {
     private lateinit var radioGroup: RadioGroup
 
     private var _binding: FragmentMainBinding? = null
-    lateinit var binding: FragmentMainBinding
+    private val binding: FragmentMainBinding
+        get(){
+            return _binding!!
+        }
+
 
     override fun onCreateView(
 
@@ -36,9 +40,9 @@ class PODFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentMainBinding.inflate(inflater)
+        _binding = FragmentMainBinding.inflate(inflater)
         setActionBar()
-        return inflater.inflate(R.layout.fragment_earth, container, false)
+        return binding.root
 
     }
 
