@@ -88,11 +88,12 @@ class NasaFragment: Fragment() {
                 R.drawable.ic_baseline_error_24
             }
             is PictureOfTheDayData.Loading -> {
-                R.drawable.ic_baseline_downloading_24
+                binding.imageView.load(R.drawable.progress_image_animation)
             }
             is PictureOfTheDayData.Success -> {
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
+                    placeholder(R.drawable.progress_image_animation)
                 }
                 binding.includeLayout.bottomSheetDescriptionHeader.text =
                     data.serverResponseData.explanation
