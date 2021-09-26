@@ -11,53 +11,65 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/myGroup"
+        <Space
+            android:id="@+id/anchor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:constraint_referenced_ids="btn1,btn2,btn3"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+
+
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
         <Button
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0" />
+            app:layout_constraintCircle="@id/anchor"
+            app:layout_constraintCircleRadius="200dp"
+
+            app:layout_constraintCircleAngle="270"/>
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2" />
+            android:text="2"
+            app:layout_constraintCircle="@id/anchor"
+            app:layout_constraintCircleRadius="200dp"
+            app:layout_constraintCircleAngle="288" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3" />
+            android:text="3"
+            app:layout_constraintCircle="@id/anchor"
+            app:layout_constraintCircleRadius="200dp"
+            app:layout_constraintCircleAngle="306"/>
 
         <Button
             android:id="@+id/btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4" />
+            android:text="4"
+            app:layout_constraintCircle="@id/anchor"
+            app:layout_constraintCircleRadius="200dp"
+            app:layout_constraintCircleAngle="324" />
 
         <Button
             android:id="@+id/btn5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
+            app:layout_constraintCircle="@id/anchor"
+            app:layout_constraintCircleRadius="220dp"
+            app:layout_constraintCircleAngle="345" />
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -90,5 +102,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:src="@drawable/swipe_indicator_passive" />
+
     </LinearLayout>
+
+    
 </FrameLayout>
