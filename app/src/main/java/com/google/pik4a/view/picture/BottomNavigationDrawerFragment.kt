@@ -1,5 +1,6 @@
 package com.google.pik4a.view.picture
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.pik4a.R
+import com.google.pik4a.animation.AnimationsActivity
 import com.google.pik4a.databinding.BottonNavigationLayoutBinding
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -28,11 +30,15 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.navigationView.setNavigationItemSelectedListener { it->
             when(it.itemId){
-                R.id.app_bar_fav ->{
-                    Toast.makeText(context,"Favorite", Toast.LENGTH_SHORT).show()
+                R.id.navigation_one ->{
+                    activity?.let {
+                        startActivity(Intent(it, AnimationsActivity::class.java))
+                    }
                 }
-                R.id.app_bar_settings ->{
-                    Toast.makeText(context,"Settings", Toast.LENGTH_SHORT).show()
+                R.id.navigation_two ->{
+                    activity?.let {
+                        //startActivity(Intent(it,AnimationsActivity::class.java))
+                    }
                 }
             }
             true

@@ -16,6 +16,11 @@
         <activity
             android:name=".homework_three.ApiActivity"
             android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".animation.AnimationsActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
