@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.*
+import com.google.pik4a.R
 import com.google.pik4a.databinding.ActivityAnimationsExplodeBinding
 
 
