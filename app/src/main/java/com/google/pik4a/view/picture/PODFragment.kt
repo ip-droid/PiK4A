@@ -1,21 +1,20 @@
 package com.google.pik4a.view.picture
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.BulletSpan
 import android.view.*
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.pik4a.R
 import com.google.pik4a.databinding.FragmentMainBinding
@@ -100,13 +99,24 @@ class PODFragment : Fragment() {
                     error(R.drawable.ic_load_error_vector)
                 }
                 data.serverResponseData.explanation?.let{
-                    binding.includeLayoutTv.textView.text = it
+//                    binding.includeLayoutTv.textView.text = it
 //                    binding.includeLayoutTv.textView.typeface =
 //                        Typeface.createFromAsset(requireActivity().assets,"font/Robus-BWqOd.otf")
 //
 //                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //                        binding.includeLayoutTv.textView.typeface = resources.getFont(R.font.azeret)
 //                    }
+                    val spannable = SpannableStringBuilder("My text \nbullet one \nbullet two")
+                    spannable.setSpan(
+                        BulletSpan(20,resources.getColor(R.color.colorAccent)),
+                        9,18, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                    spannable.setSpan(
+                        BulletSpan(20,resources.getColor(R.color.colorAccent)),
+                        21,spannable.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+
+
+
+                    binding.includeLayoutTv.textView.text = spannable
                 }
             }
         }
