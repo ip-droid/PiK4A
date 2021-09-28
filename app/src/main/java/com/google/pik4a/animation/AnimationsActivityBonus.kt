@@ -21,20 +21,18 @@ class AnimationsActivityBonus : AppCompatActivity() {
             show = !show
             val constraintSet = ConstraintSet()
             val transition = ChangeBounds()
-            if(show){
+            if (show) {
                 constraintSet.clone(this, R.layout.activity_animations_bonus_end)
                 transition.interpolator = AnticipateOvershootInterpolator(2.0f)
                 transition.duration = 1000
 
-            }else{
-                constraintSet.clone(this,R.layout.activity_animations_bonus_start)
+            } else {
+                constraintSet.clone(this, R.layout.activity_animations_bonus_start)
                 transition.interpolator = AnticipateOvershootInterpolator(2.0f)
                 transition.duration = 1000
             }
-            TransitionManager.beginDelayedTransition(binding.constraintContainer,transition)
+            TransitionManager.beginDelayedTransition(binding.constraintContainer, transition)
             constraintSet.applyTo(binding.constraintContainer)
         }
     }
-
-
 }
