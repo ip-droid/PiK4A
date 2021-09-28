@@ -3,10 +3,12 @@ package com.google.pik4a.recycler
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MotionEventCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.pik4a.databinding.ActivityRecyclerBinding
 import com.google.pik4a.databinding.ActivityRecyclerItemEarthBinding
@@ -15,6 +17,7 @@ import com.google.pik4a.databinding.ActivityRecyclerItemMarsBinding
 
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
+    private var dragListener: OnStartDragListener,
     private var data: MutableList<Pair<Data, Boolean>>
 ) : RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
 
@@ -81,7 +84,7 @@ class RecyclerActivityAdapter(
 
     private fun generateItem() = Data("Mars", "")
 
-    inner class MarsViewHolder(view: View) : BaseViewHolder(view),ItemTouchHelperViewHolder {
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view), ItemTouchHelperViewHolder {
         override fun bind(pair: Pair<Data, Boolean>) {
             // было itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {  }
             ActivityRecyclerItemMarsBinding.bind(itemView).apply {
@@ -94,6 +97,13 @@ class RecyclerActivityAdapter(
                 moveItemDown.setOnClickListener { moveDown() }
                 marsTextView.setOnClickListener { toggleText() }
                 marsDescriptionTextView.visibility = if (pair.second) View.VISIBLE else View.GONE
+
+                dragHandleImageView.setOnTouchListener { v, event ->
+                    if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+                        dragListener.onStartDrag(this@MarsViewHolder)
+                    }
+                    false
+                }
             }
         }
 
@@ -169,6 +179,10 @@ class RecyclerActivityAdapter(
     override fun onItemDismiss(position: Int) {
         data.removeAt(position)
         notifyItemRemoved(position)
+    }
+
+    interface OnStartDragListener {
+        fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
     }
 
 
