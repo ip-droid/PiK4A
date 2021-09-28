@@ -18,8 +18,15 @@
             android:exported="true">
         </activity>
 
+
+
         <activity
             android:name=".animation.AnimationsActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".animation.AnimationsActivityBonus"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +35,8 @@
             </intent-filter>
 
         </activity>
+
+
 
 
         <activity
