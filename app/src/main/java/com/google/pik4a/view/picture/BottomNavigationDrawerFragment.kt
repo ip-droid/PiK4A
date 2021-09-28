@@ -11,6 +11,7 @@ import com.google.pik4a.R
 import com.google.pik4a.animation.AnimationsActivity
 import com.google.pik4a.animation.AnimationsActivityBonus
 import com.google.pik4a.databinding.BottonNavigationLayoutBinding
+import com.google.pik4a.recycler.RecyclerActivity
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
@@ -40,6 +41,11 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                     activity?.let {
                         //startActivity(Intent(it,AnimationsActivity::class.java))
                         startActivity(Intent(it, AnimationsActivityBonus::class.java))
+                    }
+                }
+                R.id.navigation_third ->{
+                    activity?.let {
+                        startActivity(Intent(it, RecyclerActivity::class.java))
                     }
                 }
             }

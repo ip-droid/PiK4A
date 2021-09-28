@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!--   <group android:checkableBehavior="none">-->
     <!--       <item-->
     <!--           android:id="@+id/navigation_one"-->
@@ -23,6 +22,18 @@
     <!--   </group>-->
 
 
+    <!--    <group android:checkableBehavior="none">-->
+    <!--        <item-->
+    <!--            android:id="@+id/navigation_one"-->
+    <!--            android:icon="@drawable/ic_archive"-->
+    <!--            android:title="На экран 1" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/navigation_two"-->
+    <!--            android:icon="@drawable/ic_send"-->
+    <!--            android:title="На экран 2" />-->
+    <!--    </group>-->
+
+
     <group android:checkableBehavior="none">
         <item
             android:id="@+id/navigation_one"
@@ -32,6 +43,12 @@
             android:id="@+id/navigation_two"
             android:icon="@drawable/ic_send"
             android:title="На экран 2" />
+
+        <item
+            android:id="@+id/navigation_third"
+            android:icon="@drawable/ic_telescope"
+            android:title="На экран 3" />
     </group>
+
 
 </menu>
