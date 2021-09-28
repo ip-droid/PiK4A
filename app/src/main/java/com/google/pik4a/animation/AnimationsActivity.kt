@@ -1,36 +1,41 @@
 package com.google.pik4a.animation
 
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.Gravity
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.transition.ArcMotion
 import androidx.transition.ChangeBounds
-import androidx.transition.ChangeImageTransform
 import androidx.transition.TransitionManager
-import androidx.transition.TransitionSet
-import com.google.pik4a.databinding.ActivityAnimationsEnlargeBinding
+import com.google.pik4a.databinding.ActivityAnimationsPathTransitionsBinding
+import com.google.pik4a.databinding.ActivityAnimationsShuffleBinding
 
 
 class AnimationsActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityAnimationsEnlargeBinding
+    lateinit var binding: ActivityAnimationsShuffleBinding
 
-    var isExpanded = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAnimationsEnlargeBinding.inflate(layoutInflater)
+        binding = ActivityAnimationsShuffleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.imageView.setOnClickListener {
-            isExpanded= !isExpanded
 
-            val set = TransitionSet()
-                .addTransition(ChangeBounds())
-                .addTransition(ChangeImageTransform())
-
-            TransitionManager.beginDelayedTransition(binding.container,set)
-            binding.imageView.scaleType = if(isExpanded){
-                ImageView.ScaleType.CENTER_CROP
-            }else{
-                ImageView.ScaleType.FIT_CENTER
+        val titles:MutableList<String> = ArrayList()
+        for(i in 0..4){
+            titles.add("Item $i")
+        }
+        binding.button.setOnClickListener {
+            TransitionManager.beginDelayedTransition(binding.transitionsContainer,ChangeBounds())
+            binding.transitionsContainer.removeAllViews()
+            titles.shuffle()
+            for(title in titles){
+                binding.transitionsContainer.addView(TextView(this).apply {
+                    text= title
+                    ViewCompat.setTransitionName(this,title)
+                    gravity = Gravity.CENTER_HORIZONTAL
+                })
             }
         }
     }
