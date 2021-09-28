@@ -1,150 +1,99 @@
 package com.google.pik4a.recycler
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.pik4a.databinding.ActivityRecyclerItemEarthBinding
-import com.google.pik4a.databinding.ActivityRecyclerItemHeaderBinding
-import com.google.pik4a.databinding.ActivityRecyclerItemMarsBinding
+import com.google.pik4a.databinding.ActivityRecyclerBinding
 
-class RecyclerActivityAdapter(
-    private var onListItemClickListener: OnListItemClickListener,
-    private var data: MutableList<Pair<Data, Boolean>>
-) : RecyclerView.Adapter<BaseViewHolder>() {
+class RecyclerActivity : AppCompatActivity() {
+    lateinit var binding: ActivityRecyclerBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return when (viewType) {
-            TYPE_EARTH -> {
-                val binding: ActivityRecyclerItemEarthBinding =
-                    ActivityRecyclerItemEarthBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
-                EarthViewHolder(binding.root)
-            }
-            TYPE_MARS -> {
-                val binding: ActivityRecyclerItemMarsBinding =
-                    ActivityRecyclerItemMarsBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
-                MarsViewHolder(binding.root)
-            }
-            else -> {
-                val binding: ActivityRecyclerItemHeaderBinding =
-                    ActivityRecyclerItemHeaderBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
-                HeaderViewHolder(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityRecyclerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val data: MutableList<Pair<Data, Boolean>> = ArrayList()
+        repeat(10) {
+            if (it % 2 == 0) {
+                //data.add(Data("Earth"))
+            } else {
+                data.add(Pair(Data("Mars", ""), false))
             }
         }
-    }
+        val lat = 50
+        val lon = 30
+        val coordinate = lat to lon
+        val coordinate3d = Triple(1, 2, 3)
+        coordinate.first
+        coordinate.second
+        coordinate3d.first
+        coordinate3d.second
+        coordinate3d.third
 
-    override fun getItemViewType(position: Int): Int {
-        if (position == 0) return TYPE_HEADER
-        return if (data[position].first.someDescription.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
-    }
-
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        (holder).bind(data[position])
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(pair: Pair<Data, Boolean>) {
-            ActivityRecyclerItemEarthBinding.bind(itemView).apply {
-                descriptionTextView.text = pair.first.someDescription
-                wikiImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(pair.first)
+        data.add(0, Pair(Data("Header"), false))
+        val adapter = RecyclerActivityAdapter(
+            object : OnListItemClickListener {
+                override fun onItemClick(data: Data) {
+                    Toast.makeText(this@RecyclerActivity, data.someText, Toast.LENGTH_SHORT).show()
                 }
-            }
-        }
+            }, data
+        )
+        binding.recyclerView.adapter = adapter
+        binding.recyclerActivityFAB.setOnClickListener { adapter.appendItem() }
+
+        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.recyclerView)
+    }
+}
+
+class ItemTouchHelperCallback(private val adapter: RecyclerActivityAdapter) :
+    ItemTouchHelper.Callback() {
+
+    override fun isLongPressDragEnabled(): Boolean {
+        return true
     }
 
-    fun appendItem() {
-        data.add(Pair(generateItem(), false))
-        notifyItemInserted(itemCount - 1)
+    override fun isItemViewSwipeEnabled(): Boolean {
+        return true
     }
 
-    private fun generateItem() = Data("Mars", "")
-
-    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(pair: Pair<Data, Boolean>) {
-            // было itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {  }
-            ActivityRecyclerItemMarsBinding.bind(itemView).apply {
-                marsImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(pair.first)
-                }
-                addItemImageView.setOnClickListener { addItem() }
-                removeItemImageView.setOnClickListener { removeItem() }
-                moveItemUp.setOnClickListener { moveUp() }
-                moveItemDown.setOnClickListener { moveDown() }
-                marsTextView.setOnClickListener { toggleText() }
-                marsDescriptionTextView.visibility = if (pair.second) View.VISIBLE else View.GONE
-            }
-        }
-
-        private fun toggleText() {
-            data[layoutPosition] = data[layoutPosition].let {
-                it.first to !it.second
-            }
-            notifyItemChanged(layoutPosition)
-        }
-
-        private fun moveUp() {
-            layoutPosition.takeIf { it > 1 }?.also {
-                data.removeAt(it).apply {
-                    data.add(it - 1, this)
-                }
-                notifyItemMoved(it, it - 1)
-            }
-        }
-
-        private fun moveDown() {
-            layoutPosition.takeIf { it < itemCount - 1 }?.also {
-                data.removeAt(it).apply {
-                    data.add(it + 1, this)
-                }
-                notifyItemMoved(it, it + 1)
-            }
-        }
-
-        private fun addItem() {
-            data.add(layoutPosition, Pair(generateItem(), false))
-            notifyItemInserted(layoutPosition)
-        }
-
-        private fun removeItem() {
-            data.removeAt(layoutPosition)
-            notifyItemRemoved(layoutPosition)
-        }
-
+    override fun getMovementFlags(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder
+    ): Int {
+        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
+        return makeMovementFlags(
+            dragFlags,
+            swipeFlags
+        )
     }
 
-    inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(pair: Pair<Data, Boolean>) {
-            // было itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {  }
-            ActivityRecyclerItemHeaderBinding.bind(itemView).apply {
-                root.setOnClickListener {
-                    onListItemClickListener.onItemClick(pair.first)
-                }
-            }
+    override fun onMove(
+        recyclerView: RecyclerView,
+        source: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder
+    ): Boolean {
+        adapter.onItemMove(source.adapterPosition, target.adapterPosition)
+        return true
+    }
+
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int) {
+        adapter.onItemDismiss(viewHolder.adapterPosition)
+    }
+
+    override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+            val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
+            itemViewHolder.onItemSelected()
         }
+        super.onSelectedChanged(viewHolder, actionState)
     }
 
-    companion object {
-        private const val TYPE_EARTH = 0
-        private const val TYPE_MARS = 1
-        private const val TYPE_HEADER = 2
+    override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
+        super.clearView(recyclerView, viewHolder)
+        val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
+        itemViewHolder.onItemClear()
     }
-
-
 }
