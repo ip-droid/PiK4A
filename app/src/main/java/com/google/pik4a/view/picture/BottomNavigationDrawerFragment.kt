@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.pik4a.R
 import com.google.pik4a.animation.AnimationsActivity
@@ -30,22 +29,22 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.navigationView.setNavigationItemSelectedListener { it->
-            when(it.itemId){
-                R.id.navigation_one ->{
+        binding.navigationView.setNavigationItemSelectedListener { it ->
+            when (it.itemId) {
+                R.id.navigation_one -> {
                     activity?.let {
                         startActivity(Intent(it, AnimationsActivity::class.java))
                     }
                 }
-                R.id.navigation_two ->{
+                R.id.navigation_two -> {
                     activity?.let {
                         //startActivity(Intent(it,AnimationsActivity::class.java))
                         startActivity(Intent(it, AnimationsActivityBonus::class.java))
                     }
                 }
-                R.id.navigation_third ->{
+                R.id.navigation_third -> {
                     activity?.let {
-                        startActivity(Intent(it,RecyclerActivityAdapter::class.java))
+                        startActivity(Intent(it, RecyclerActivityAdapter::class.java))
                     }
                 }
             }
@@ -55,8 +54,9 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
+
     companion object {
         fun newInstance() = BottomNavigationDrawerFragment()
     }

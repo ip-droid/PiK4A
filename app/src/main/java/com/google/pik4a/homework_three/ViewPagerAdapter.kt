@@ -15,6 +15,7 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager):FragmentSta
 
     private val fragments = arrayOf(EarthFragment(),MarsFragment(),SystemFragment(),NasaFragment())
 
+
     override fun getCount(): Int {
         return fragments.size
     }
