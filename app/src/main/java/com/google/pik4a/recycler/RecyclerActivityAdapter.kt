@@ -1,16 +1,12 @@
 package com.google.pik4a.recycler
 
 import android.graphics.Color
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.pik4a.databinding.ActivityRecyclerBinding
 import com.google.pik4a.databinding.ActivityRecyclerItemEarthBinding
 import com.google.pik4a.databinding.ActivityRecyclerItemHeaderBinding
 import com.google.pik4a.databinding.ActivityRecyclerItemMarsBinding
