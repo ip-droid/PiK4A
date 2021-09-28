@@ -10,7 +10,7 @@ import com.google.pik4a.databinding.ActivityRecyclerItemMarsBinding
 
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
-    private var data: List<Data>
+    private var data: MutableList<Data>
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -57,6 +57,13 @@ class RecyclerActivityAdapter(
         }
     }
 
+    fun appendItem(){
+        data.add(generateItem())
+        notifyDataSetChanged()
+    }
+
+    private fun generateItem() = Data("Mars","")
+
     inner class MarsViewHolder(view: View):BaseViewHolder(view){
         override fun bind(data: Data){
             // было itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {  }
@@ -64,8 +71,20 @@ class RecyclerActivityAdapter(
                 marsImageView.setOnClickListener {
                     onListItemClickListener.onItemClick(data)
                 }
+                addItemImageView.setOnClickListener { addItem() }
+                removeItemImageView.setOnClickListener { removeItem() }
             }
         }
+
+        private fun addItem(){
+            data.add(layoutPosition,generateItem())
+            notifyDataSetChanged()
+        }
+        private fun removeItem(){
+            data.removeAt(layoutPosition)
+            notifyDataSetChanged()
+        }
+
     }
 
     inner class HeaderViewHolder(view: View):BaseViewHolder(view){
