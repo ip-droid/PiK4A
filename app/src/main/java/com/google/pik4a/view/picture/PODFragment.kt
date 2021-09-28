@@ -1,7 +1,9 @@
 package com.google.pik4a.view.picture
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.RadioButton
@@ -97,10 +99,15 @@ class PODFragment : Fragment() {
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
                 }
-                binding.includeLayout.bottomSheetDescriptionHeader.text =
-                    data.serverResponseData.explanation
-                binding.includeLayout.bottomSheetDescription.text =
-                    data.serverResponseData.explanation
+                data.serverResponseData.explanation?.let{
+                    binding.includeLayoutTv.textView.text = it
+                    binding.includeLayoutTv.textView.typeface =
+                        Typeface.createFromAsset(requireActivity().assets,"font/Robus-BWqOd.otf")
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        binding.includeLayoutTv.textView.typeface = resources.getFont(R.font.azeret)
+                    }
+                }
             }
         }
     }
