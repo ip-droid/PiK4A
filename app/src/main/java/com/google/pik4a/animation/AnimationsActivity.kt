@@ -3,30 +3,28 @@ package com.google.pik4a.animation
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.FrameLayout
-import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.transition.ArcMotion
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
 import com.google.pik4a.databinding.ActivityAnimationsFabBinding
-import com.google.pik4a.databinding.ActivityAnimationsPathTransitionsBinding
-import com.google.pik4a.databinding.ActivityAnimationsShuffleBinding
 
 
 class AnimationsActivity : AppCompatActivity() {
 
     var isExpanded = false
     lateinit var binding: ActivityAnimationsFabBinding
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationsFabBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setFAB()
+
+        binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+            binding.header.isSelected = binding.scrollView.canScrollVertically(-1)
+        }
     }
 
     private fun setFAB() {
