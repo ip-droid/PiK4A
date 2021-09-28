@@ -1,16 +1,26 @@
 package com.google.pik4a.view.picture
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableStringBuilder
-import android.text.style.BulletSpan
+import android.text.style.BackgroundColorSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.QuoteSpan
+import android.text.style.TypefaceSpan
 import android.view.*
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.provider.FontRequest
+import androidx.core.provider.FontsContractCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,7 +39,7 @@ class PODFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
-        get(){
+        get() {
             return _binding!!
         }
 
@@ -98,25 +108,104 @@ class PODFragment : Fragment() {
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
                 }
-                data.serverResponseData.explanation?.let{
-//                    binding.includeLayoutTv.textView.text = it
-//                    binding.includeLayoutTv.textView.typeface =
-//                        Typeface.createFromAsset(requireActivity().assets,"font/Robus-BWqOd.otf")
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        binding.includeLayoutTv.textView.typeface = resources.getFont(R.font.azeret)
-//                    }
-                    val spannable = SpannableStringBuilder("My text \nbullet one \nbullet two")
+                data.serverResponseData.explanation?.let {
+                    //binding.includeLayoutTv.textView.text = it
+                    /*binding.includeLayoutTv.textView.typeface =
+                        Typeface.createFromAsset(requireActivity().assets,"font/Robus-BWqOd.otf")
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        binding.includeLayoutTv.textView.typeface = resources.getFont(R.font.azeret)
+                    }*/
+
+
+                    //маркировка через HTML
+                    /*val text = "My text <ul><li>bullet one</li><li>bullet two</li></ul>"
+                    binding.includeLayoutTv.textView.text = Html.fromHtml(text,Html.FROM_HTML_MODE_COMPACT)*/
+
+                    //маркировка через Spannable
+                    /* val spannable = SpannableStringBuilder("My text \nbullet one \nbullet two")
+                     spannable.setSpan(BulletSpan(20,resources.getColor(R.color.colorAccent)),
+                         9,18,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                     spannable.setSpan(BulletSpan(20,resources.getColor(R.color.colorAccent)),
+                         21,spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)*/
+                    val spannableStart = SpannableStringBuilder(it)
+
+                    binding.includeLayoutTv.textView.setText(
+                        spannableStart,
+                        TextView.BufferType.EDITABLE
+                    )
+                    val spannable = binding.includeLayoutTv.textView.text as SpannableStringBuilder
+
+
+                    val start = 1
+                    val end = 3
+
+
+
                     spannable.setSpan(
-                        BulletSpan(20,resources.getColor(R.color.colorAccent)),
-                        9,18, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        ForegroundColorSpan(resources.getColor(R.color.colorAccent)), start,
+                        end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    spannable.insert(end, "x")
+                    spannable.insert(start, "x")
+
                     spannable.setSpan(
-                        BulletSpan(20,resources.getColor(R.color.colorAccent)),
-                        21,spannable.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        ForegroundColorSpan(resources.getColor(R.color.colorPrimary)), 5,
+                        20, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+                    spannable.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.colorAccent)), 20,
+                        35, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        spannable.setSpan(
+                            TypefaceSpan(resources.getFont(R.font.azeret)), 20,
+                            25, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                        )
+                    }
+
+                    spannable.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.colorPrimary)), 0,
+                        spannable.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        QuoteSpan(resources.getColor(R.color.colorAccent)), 0,
+                        5, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        BackgroundColorSpan(resources.getColor(R.color.colorAccent)), 1,
+                        5, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        QuoteSpan(resources.getColor(R.color.colorAccent)), 14,
+                        25, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        QuoteSpan(resources.getColor(R.color.colorAccent)), 27,
+                        29, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+
+                    val request = FontRequest("com.google.android.gms.fonts",
+                        "com.google.android.gms","Aguafina Script",R.array.com_google_android_gms_fonts_certs)
+                    val fontCallback = object : FontsContractCompat.FontRequestCallback(){
+                        override fun onTypefaceRetrieved(typeface: Typeface?) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                typeface?.let {
+                                    spannable.setSpan(TypefaceSpan(it),0,
+                                        spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                                }
+                            }
+                        }
+                    }
+                    FontsContractCompat.requestFont(requireContext(),request,fontCallback,
+                        Handler(Looper.getMainLooper())
+                    )
 
 
 
-                    binding.includeLayoutTv.textView.text = spannable
                 }
             }
         }
@@ -142,7 +231,7 @@ class PODFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> {
                 Toast.makeText(context, "Favorite", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(context,ApiActivity::class.java))
+                startActivity(Intent(context, ApiActivity::class.java))
             }
             R.id.app_bar_settings -> {
                 Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
