@@ -1,107 +1,44 @@
 package com.google.pik4a.recycler
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.google.pik4a.databinding.ActivityRecyclerItemEarthBinding
-import com.google.pik4a.databinding.ActivityRecyclerItemHeaderBinding
-import com.google.pik4a.databinding.ActivityRecyclerItemMarsBinding
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.pik4a.databinding.ActivityRecyclerBinding
 
-class RecyclerActivityAdapter(
-    private var onListItemClickListener: OnListItemClickListener,
-    private var data: MutableList<Data>
-) : RecyclerView.Adapter<BaseViewHolder>() {
+class RecyclerActivity : AppCompatActivity() {
+    lateinit var binding: ActivityRecyclerBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return when(viewType){
-            TYPE_EARTH->{
-                val binding: ActivityRecyclerItemEarthBinding =
-                    ActivityRecyclerItemEarthBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-                EarthViewHolder(binding.root)
-            }
-            TYPE_MARS->{
-                val binding: ActivityRecyclerItemMarsBinding =
-                    ActivityRecyclerItemMarsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-                MarsViewHolder(binding.root)
-            }
-            else -> {
-                val binding: ActivityRecyclerItemHeaderBinding =
-                    ActivityRecyclerItemHeaderBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-                HeaderViewHolder(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityRecyclerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val data: MutableList<Pair<Data, Boolean>> = ArrayList()
+        repeat(10) {
+            if (it % 2 == 0) {
+                //data.add(Data("Earth"))
+            } else {
+                data.add(Pair(Data("Mars", ""), false))
             }
         }
-    }
+        val lat = 50
+        val lon = 30
+        val coordinate = lat to lon
+        val coordinate3d = Triple(1, 2, 3)
+        coordinate.first
+        coordinate.second
+        coordinate3d.first
+        coordinate3d.second
+        coordinate3d.third
 
-    override fun getItemViewType(position: Int): Int {
-        if(position==0) return TYPE_HEADER
-        return if(data[position].someDescription.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
-    }
-
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        (holder).bind(data[position])
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    inner class EarthViewHolder(view: View):BaseViewHolder(view){
-        override fun bind(data: Data){
-            ActivityRecyclerItemEarthBinding.bind(itemView).apply {
-                descriptionTextView.text = data.someDescription
-                wikiImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(data)
+        data.add(0, Pair(Data("Header"), false))
+        val adapter = RecyclerActivityAdapter(
+            object : OnListItemClickListener {
+                override fun onItemClick(data: Data) {
+                    Toast.makeText(this@RecyclerActivity, data.someText, Toast.LENGTH_SHORT).show()
                 }
-            }
-        }
+            }, data
+        )
+        binding.recyclerView.adapter = adapter
+        binding.recyclerActivityFAB.setOnClickListener { adapter.appendItem() }
     }
-
-    fun appendItem(){
-        data.add(generateItem())
-        notifyDataSetChanged()
-    }
-
-    private fun generateItem() = Data("Mars","")
-
-    inner class MarsViewHolder(view: View):BaseViewHolder(view){
-        override fun bind(data: Data){
-            // было itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {  }
-            ActivityRecyclerItemMarsBinding.bind(itemView).apply {
-                marsImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(data)
-                }
-                addItemImageView.setOnClickListener { addItem() }
-                removeItemImageView.setOnClickListener { removeItem() }
-            }
-        }
-
-        private fun addItem(){
-            data.add(layoutPosition,generateItem())
-            notifyDataSetChanged()
-        }
-        private fun removeItem(){
-            data.removeAt(layoutPosition)
-            notifyDataSetChanged()
-        }
-
-    }
-
-    inner class HeaderViewHolder(view: View):BaseViewHolder(view){
-        override fun bind(data: Data){
-            // было itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {  }
-            ActivityRecyclerItemHeaderBinding.bind(itemView).apply {
-                root.setOnClickListener {
-                    onListItemClickListener.onItemClick(data)
-                }
-            }
-        }
-    }
-
-    companion object{
-        private const val TYPE_EARTH=0
-        private const val TYPE_MARS=1
-        private const val TYPE_HEADER=2
-    }
-
 }
