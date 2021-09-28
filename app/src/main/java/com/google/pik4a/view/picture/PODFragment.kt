@@ -101,12 +101,12 @@ class PODFragment : Fragment() {
                 }
                 data.serverResponseData.explanation?.let{
                     binding.includeLayoutTv.textView.text = it
-                    binding.includeLayoutTv.textView.typeface =
-                        Typeface.createFromAsset(requireActivity().assets,"font/Robus-BWqOd.otf")
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        binding.includeLayoutTv.textView.typeface = resources.getFont(R.font.azeret)
-                    }
+//                    binding.includeLayoutTv.textView.typeface =
+//                        Typeface.createFromAsset(requireActivity().assets,"font/Robus-BWqOd.otf")
+//
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        binding.includeLayoutTv.textView.typeface = resources.getFont(R.font.azeret)
+//                    }
                 }
             }
         }
