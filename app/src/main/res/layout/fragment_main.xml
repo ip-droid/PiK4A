@@ -6,87 +6,87 @@
     android:layout_height="match_parent">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout"
+            style="@style/CustomOutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:hint="@string/search_wiki"
+            app:endIconCheckable="true"
+            app:endIconDrawable="@drawable/ic_wikipedia"
+            app:endIconMode="custom"
+            app:helperText="@string/wiki_helper_text"
+            app:layout_constraintBottom_toTopOf="@+id/image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout"
-                style="@style/CustomOutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:hint="@string/search_wiki"
-                app:endIconCheckable="true"
-                app:endIconDrawable="@drawable/ic_wikipedia"
-                app:endIconMode="custom"
-                app:helperText="@string/wiki_helper_text"
-                app:layout_constraintBottom_toTopOf="@+id/image_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/radioGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
-                    <RadioGroup
-                        android:id="@+id/radioGroup"
+                    <RadioButton
+                        android:id="@+id/spaceTheme"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:text="Space theme" />
 
-                        <RadioButton
-                            android:id="@+id/spaceTheme"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Space theme" />
+                    <RadioButton
+                        android:id="@+id/moonTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Moon theme" />
 
-                        <RadioButton
-                            android:id="@+id/moonTheme"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Moon theme" />
-
-                        <RadioButton
-                            android:id="@+id/martianTheme"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Martian theme" />
-                    </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/martianTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Martian theme" />
+                </RadioGroup>
 
 
-                </LinearLayout>
+            </LinearLayout>
 
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.pik4a.utils.CustomImageView
-                android:id="@+id/image_view"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/photo_of_the_day_stub"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.526"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.814"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.pik4a.utils.CustomImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/photo_of_the_day_stub"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.814"
+            app:srcCompat="@drawable/ic_no_photo_vector" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <include
@@ -95,12 +95,12 @@
         app:layout_anchor="@+id/include_layout"
         app:layout_anchorGravity="top|center" />
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:fabAlignmentMode="center"
-            app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:fabAlignmentMode="center"
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
