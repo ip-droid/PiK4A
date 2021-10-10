@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val type = 1
         /*val themeID = getMyTheme();
         setTheme(themeID)*/
         binding = ActivitySplashBinding.inflate(layoutInflater)

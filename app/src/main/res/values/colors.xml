@@ -47,4 +47,32 @@
     <color name="CSSpace">#5B6C87</color>
 
 
+
+
+    <color name="color_gray2">#66000000</color>
+
+
+    <color name="myColorOne">#FFff4081</color>
+    <color name="myColorSecond">#FF76ff03</color>
+
+
+    <!-- Dark Text Color for Light Background -->
+    <color name="textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
+    <color name="textDarkSecondary">#8A000000</color> <!--8A for %54 opacity-->
+    <color name="textDarkDisabled">#61000000</color> <!--61 for %38 opacity-->
+
+    <!-- White Text Color for Dark Background -->
+    <color name="textLightPrimary">#FFFFFF</color> <!--%100 opacity-->
+    <color name="textLightSecondary">#B2FFFFFF</color> <!--B2 for %70 opacity-->
+    <color name="textLightDisabled">#80FFFFFF</color> <!--80 for %50 opacity-->
+    <color name="textLightDisabledDEPRECATED">#4CFFFFFF</color> <!--4C for %30 opacity-->
+
+
+    <!--4C for %30 opacity-->
+
+
+
+
+
+
 </resources>
