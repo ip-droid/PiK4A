@@ -14,6 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.PiK4A.Splash">
+        <item name="android:windowBackground">@drawable/splash_background_drawable</item>
+    </style>
+
     <style name="CustomOutlinedBox" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">10</item>
