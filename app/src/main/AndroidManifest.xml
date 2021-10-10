@@ -17,6 +17,12 @@
             android:name=".homework_three.ApiActivity"
             android:exported="true">
             android:theme="@style/Theme.PiK4A.Splash"
+        </activity>
+
+        <activity
+            android:name=".view.picture.SplashActivity"
+            android:noHistory="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
