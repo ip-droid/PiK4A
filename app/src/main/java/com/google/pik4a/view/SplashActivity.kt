@@ -1,18 +1,12 @@
-package com.google.pik4a.view.picture
+package com.google.pik4a.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.LinearInterpolator
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import com.google.pik4a.R
 import com.google.pik4a.databinding.ActivitySplashBinding
-import com.google.pik4a.homework_three.NasaFragment
-import com.google.pik4a.view.MainActivity
-import com.google.pik4a.view.picture.PODFragment
 
 class SplashActivity : AppCompatActivity() {
     lateinit var handler: Handler
